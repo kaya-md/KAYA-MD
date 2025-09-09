@@ -1,0 +1,37 @@
+{
+  "name": "KAYA-MD Loader",
+  "description": "Bootstrap pour Kaya-MD (le vrai code reste privé)",
+  "logo": "https://files.catbox.moe/qumhu4.jpg",
+  "keywords": ["kaya", "whatsapp", "bot", "loader"],
+  "env": {
+    "SESSION_ID": {
+      "description": "Votre session WhatsApp (doit commencer par kaya~)",
+      "value": ""
+    },
+    "OWNER_NUMBER": {
+      "description": "Numéro du propriétaire du bot (ex: 2250501584615)",
+      "value": "2250501584615"
+    },
+    "PREFIX": {
+      "description": "Préfixe des commandes du bot",
+      "value": "."
+    },
+    "TIMEZONE": {
+      "description": "Fuseau horaire utilisé par le bot",
+      "value": "Africa/Kinshasa"
+    }
+  },
+  "buildpacks": [
+    { "url": "https://github.com/heroku/heroku-buildpack-nodejs.git" }
+  ],
+  "stack": "heroku-24",
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "scripts": {
+    "postdeploy": "node index.js"
+  }
+}
