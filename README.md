@@ -2,14 +2,21 @@
 
 ![KAYA-MD](https://files.catbox.moe/ya7puq.jpg)
 
-
+KAYA-MD est un bot WhatsApp pratique et facile à utiliser, permettant la gestion de sessions et des fonctionnalités avancées via un tableau de bord en ligne.
 
 ---
 
-## 🔗 Liens parrainage
+## 🔗 Liens Parrainage
+[![Parrainage](https://img.shields.io/badge/Parrainage-Visiter-green?style=for-the-badge&logo=whatsapp)](https://kaya-md-session-id-0hdu.onrender.com/)
 
-[![Parrainage](https://img.shields.io/badge/Parrainage-Visiter-blue?style=for-the-badge&logo=whatsapp)](https://kaya-md-session-id-0hdu.onrender.com/)  
-[![Panel](https://img.shields.io/badge/Panel-Accéder-blue?style=for-the-badge&logo=github)](https://dashboard.katabump.com/auth/login#483bf6)  
+---
+
+## 🔗 Plateforme de déploiement
+[![Panel](https://img.shields.io/badge/Panel-Accéder-blue?style=for-the-badge&logo=github)](https://dashboard.katabump.com/auth/login#483bf6)
+
+---
+
+## 🔗 Groupe WhatsApp
 [![Groupe WhatsApp](https://img.shields.io/badge/Groupe_WhatsApp-Rejoindre-green?style=for-the-badge&logo=whatsapp)](https://chat.whatsapp.com/DZotf319LZy4D6Qxw5A0cn?mode=ac_t)
 
 ---
@@ -29,13 +36,6 @@
 3. Collez-le dans le fichier `config.js`.  
 4. Déployez le bot via le dashboard.  
 5. Rejoignez le groupe WhatsApp pour obtenir de l’aide et des mises à jour.
-
----
-
-## 💬 Support
-Pour toute question ou problème, rejoignez le groupe officiel WhatsApp :  
-[![Groupe WhatsApp](https://img.shields.io/badge/Groupe_WhatsApp-Rejoindre-green?style=for-the-badge&logo=whatsapp)](https://chat.whatsapp.com/DZotf319LZy4D6Qxw5A0cn?mode=ac_t)[https://chat.whatsapp.com/DZotf319LZy4D6Qxw5A0cn?mode=ac_t](https://chat.whatsapp.com/DZotf319LZy4D6Qxw5A0cn?mode=ac_t)
-
 ---
 
 ## ⚡ Fonctionnalités
