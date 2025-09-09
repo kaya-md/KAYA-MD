@@ -1,8 +1,5 @@
 # KAYA-MD
 
-![KAYA-MD]
-
-KAYA-MD est un bot WhatsApp pratique et facile à utiliser, permettant la gestion de sessions et des fonctionnalités avancées via un tableau de bord en ligne.
 
 ---
 
