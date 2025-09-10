@@ -1,20 +1,27 @@
-// ================= config.js =================
+// ================= config.js ===============
 const fs = require('fs');
 const path = require('path');
 
-// ---------------- Config ----------------
+// ---------------- Config par défaut ----------------
 const defaultConfig = {
-  SESSION_ID: "met ta session ici",
-  OWNER_NUMBER: " ton numéro", 
+  // ---------------- session----------------
+  SESSION_ID: " met la session ici ",
+  OWNER_NUMBER: "243910014043", // Numéro 
+
+  // ---------------- Paramètres généraux ----------------
   PREFIX: ".",
   TIMEZONE: "Africa/Kinshasa",
-  publicBot: true,   // true = public, false = privé
-  autoRead: true,
-  restrict: false,
-  botImage: "",
+  publicBot: true,    
+  autoRead: true,     
+  restrict: false,    
+
+  // ---------------- Apparence ----------------
+  botImage: "",      
+
+  // ---------------- Liens utiles ----------------
   LINKS: {
-    group: "https://chat.whatsapp.com/DoMh6jWjly2ErwVppmCGZo",
-    chanel: "https://whatsapp.com/channel/0029Vb6FFPM002T3SKA6bb2D",
+    group:    "https://chat.whatsapp.com/DoMh6jWjly2ErwVppmCGZo",
+    chanel:   "https://whatsapp.com/channel/0029Vb6FFPM002T3SKA6bb2D",
     telegram: "https://t.me/zonetech2"
   }
 };
@@ -33,7 +40,7 @@ try {
     const rawData = fs.readFileSync(configPath, "utf-8");
     const parsed = JSON.parse(rawData);
 
-    // Merge avec les valeurs par défaut (pour ajouter de nouvelles clés si jamais)
+    // Merge avec les valeurs par défaut pour conserver les nouvelles clés
     userConfig = { ...defaultConfig, ...parsed };
   } else {
     fs.writeFileSync(configPath, JSON.stringify(defaultConfig, null, 2));
@@ -49,37 +56,7 @@ if (!userConfig.SESSION_ID || !userConfig.OWNER_NUMBER) {
   console.warn("⚠️ SESSION_ID ou OWNER_NUMBER vide ! Vérifie config.json");
 }
 
-// ---------------- Fonction pour sauvegarder ----------------
-function saveConfig(updatedConfig) {
-  try {
-    userConfig = { ...userConfig, ...updatedConfig };
-    fs.writeFileSync(configPath, JSON.stringify(userConfig, null, 2));
-    console.log("✅ Configuration sauvegardée avec succès.");
-  } catch (err) {
-    console.error("❌ Impossible de sauvegarder la configuration:", err);
-  }
-}
-
-// ---------------- Export ----------------
-module.exports = {
-  ...userConfig,
-  saveConfig
-};    userConfig = { ...defaultConfig, ...parsed };
-  } else {
-    fs.writeFileSync(configPath, JSON.stringify(defaultConfig, null, 2));
-    console.log("✅ config.json créé avec les paramètres par défaut dans /data");
-  }
-} catch (err) {
-  console.error("❌ Erreur lors du chargement de config.json:", err);
-  console.log("ℹ️ Le bot utilisera les paramètres par défaut");
-}
-
-// ---------------- Validation minimale ----------------
-if (!userConfig.SESSION_ID || !userConfig.OWNER_NUMBER) {
-  console.warn("⚠️ SESSION_ID ou OWNER_NUMBER vide ! Vérifie config.json");
-}
-
-// ---------------- Fonction pour sauvegarder ----------------
+// ---------------- Fonction pour sauvegarder la configuration ----------------
 function saveConfig(updatedConfig) {
   try {
     userConfig = { ...userConfig, ...updatedConfig };
