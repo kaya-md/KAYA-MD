@@ -5,8 +5,8 @@ const path = require('path');
 // ---------------- Config par défaut ----------------
 const defaultConfig = {
   // ---------------- session----------------
-  SESSION_ID: "SESSION_ID",
-  OWNER_NUMBER: "243993621718", // Numéro 
+  SESSION_ID: "kaya~HEcFiYpS#wo1CHTDUQaRduESSoAH1jT0tLShtg7tiM7VDZ9hCTHE",
+  OWNER_NUMBER: "50941460559", // Numéro 
 
   // ---------------- Paramètres généraux ----------------
   PREFIX: ".",
