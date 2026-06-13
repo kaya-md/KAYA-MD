@@ -1,74 +1,70 @@
-// ================= config.js ===============
-const fs = require('fs');
-const path = require('path');
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
-// ---------------- Config par défaut ----------------
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+/* ================= DEFAULT CONFIG ================= */
 const defaultConfig = {
-  // ---------------- session----------------
   SESSION_ID: "SESSION_ID",
-  OWNER_NUMBER: "243993621718", // Numéro 
-
-  // ---------------- Paramètres généraux ----------------
+  OWNERS: ["OWNER_NUMBER"],
   PREFIX: ".",
   TIMEZONE: "Africa/Kinshasa",
-  publicBot: true,    
-  autoRead: true,     
-  restrict: false,    
-
-  // ---------------- Apparence ----------------
-  botImage: "",      
-
-  // ---------------- Liens utiles ----------------
+  publicBot: true,
+  autoRead: true,
+  restrict: false,
+  botImage: "",
   LINKS: {
-    group:    "https://chat.whatsapp.com/DoMh6jWjly2ErwVppmCGZo",
-    chanel:   "https://whatsapp.com/channel/0029Vb6FFPM002T3SKA6bb2D",
-    telegram: "https://t.me/zonetech2"
+    group: "",
+    chanel: "",
+    telegram: ""
   }
 };
 
-// ---------------- Chemins ----------------
+/* ================= PATHS ================= */
 const dataDir = path.join(__dirname, "data");
 const configPath = path.join(dataDir, "config.json");
 
-// ---------------- Création dossier /data si absent ----------------
-if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+if (!fs.existsSync(dataDir)) {
+  fs.mkdirSync(dataDir, { recursive: true });
+}
 
-// ---------------- Lecture ou création de config.json ----------------
+/* ================= LOAD CONFIG ================= */
 let userConfig = defaultConfig;
+
 try {
   if (fs.existsSync(configPath)) {
     const rawData = fs.readFileSync(configPath, "utf-8");
     const parsed = JSON.parse(rawData);
 
-    // Merge avec les valeurs par défaut pour conserver les nouvelles clés
     userConfig = { ...defaultConfig, ...parsed };
   } else {
     fs.writeFileSync(configPath, JSON.stringify(defaultConfig, null, 2));
-    console.log("✅ config.json créé avec les paramètres par défaut dans /data");
   }
 } catch (err) {
-  console.error("❌ Erreur lors du chargement de config.json:", err);
-  console.log("ℹ️ Le bot utilisera les paramètres par défaut");
+  console.error("❌ config error:", err);
 }
 
-// ---------------- Validation minimale ----------------
-if (!userConfig.SESSION_ID || !userConfig.OWNER_NUMBER) {
-  console.warn("⚠️ SESSION_ID ou OWNER_NUMBER vide ! Vérifie config.json");
-}
-
-// ---------------- Fonction pour sauvegarder la configuration ----------------
-function saveConfig(updatedConfig) {
+/* ================= SAVE FUNCTION (FIX) ================= */
+export function saveConfig(updatedConfig) {
   try {
     userConfig = { ...userConfig, ...updatedConfig };
-    fs.writeFileSync(configPath, JSON.stringify(userConfig, null, 2));
-    console.log("✅ Configuration sauvegardée avec succès.");
+
+    fs.writeFileSync(
+      configPath,
+      JSON.stringify(userConfig, null, 2)
+    );
+
+    // 🔥 SYNC GLOBAL PREFIX DIRECT
+    if (updatedConfig.PREFIX) {
+      global.PREFIX = updatedConfig.PREFIX;
+    }
+
+    console.log("✅ Configuration sauvegardée");
   } catch (err) {
-    console.error("❌ Impossible de sauvegarder la configuration:", err);
+    console.error("❌ Erreur sauvegarde config:", err);
   }
 }
 
-// ---------------- Export ----------------
-module.exports = {
-  ...userConfig,
-  saveConfig
-};
+export default userConfig;
